@@ -42,7 +42,7 @@ export class PublicacionesPage implements OnInit{
                 this.zone.run(()=>{
                     this.dataurl=JSON.parse(res.data);
                     
-                    this.data = this.dataurl;
+                    this.data = this.dataurl.data;
                     
                     loading.dismiss();
                 });
@@ -58,17 +58,17 @@ export class PublicacionesPage implements OnInit{
         var val = ev.target.value;
         if (val && val.trim() != '') {
             this.data = this.data.filter(item =>  {
-                return (item.Cargo.toLowerCase().indexOf(val.toLowerCase()) > -1) ||
-                    (item.Nombre.toLowerCase().indexOf(val.toLowerCase()) > -1) ||
-                    ((''+item.id).toLowerCase().indexOf(val.toLowerCase()) > -1);
+                return (item.PERS_NOMBREAPELLIDO.toLowerCase().indexOf(val.toLowerCase()) > -1) ||
+                    (item.PUBL_DESCRIPCION.toLowerCase().indexOf(val.toLowerCase()) > -1) ||
+                    ((''+item.PUBL_FECHACREADO).toLowerCase().indexOf(val.toLowerCase()) > -1);
             });
         }
     }
 
     openWiew(objData){
         let alert = this.alertCtrl.create({
-            title: 'Informacion Vacante',
-            message: 'Quieres postularte a la Vacante',
+            title: 'Publicacion',
+            message: 'Ver mas Informacion de la Publicacion',
             buttons: [
                 {
                     text: 'Cancelar',
@@ -78,9 +78,9 @@ export class PublicacionesPage implements OnInit{
                     }
                 },
                 {
-                    text: 'Postularse',
+                    text: 'Aceptar',
                     handler: () => {
-                        this.postularseVacante(objData);
+                        this.goDetallePublicacion(objData);
                     }
                 }
             ]
@@ -88,8 +88,8 @@ export class PublicacionesPage implements OnInit{
         alert.present();
     }
 
-    postularseVacante(vacante){
-        let loading = this.loadingCtr.create({
+    goDetallePublicacion(publicacion){
+        /*let loading = this.loadingCtr.create({
             content: 'Por favor espere...'
         });
         loading.present();
@@ -106,7 +106,9 @@ export class PublicacionesPage implements OnInit{
             }).catch(e =>{
             console.log(e);
             loading.dismiss();
-        });
+        });*/
+
+        
     }
 
 

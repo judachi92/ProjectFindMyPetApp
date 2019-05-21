@@ -13,7 +13,7 @@ import {HomePage} from '../pages/home/home';
 import {IndexPage} from "../pages/index";
 import {MapaPage} from "../pages/mapa/mapa";
 import {ScanQRPage} from "../pages/scanQR/scanQR";
-import {UserVacantesPage} from "../pages/userVacantes/userVacantes";
+import {PerfilUsuarioPage} from "../pages/perfilUsuario/perfilUsuario";
 import {PublicacionesPage} from "../pages/publicaciones/publicaciones";
 import {RegisterPage} from "../pages/register/register";
 
@@ -21,7 +21,7 @@ import {RegisterPage} from "../pages/register/register";
     declarations: [
         MyApp,
         HomePage,
-        IndexPage, MapaPage, ScanQRPage, UserVacantesPage, PublicacionesPage, RegisterPage,
+        IndexPage, MapaPage, ScanQRPage, PerfilUsuarioPage, PublicacionesPage, RegisterPage,
     ],
     imports: [
         BrowserModule,
@@ -30,7 +30,7 @@ import {RegisterPage} from "../pages/register/register";
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
-        HomePage, IndexPage, MapaPage, ScanQRPage, UserVacantesPage, PublicacionesPage, RegisterPage,
+        HomePage, IndexPage, MapaPage, ScanQRPage, PerfilUsuarioPage, PublicacionesPage, RegisterPage,
     ],
     providers: [
         BarcodeScanner,

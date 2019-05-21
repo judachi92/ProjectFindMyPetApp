@@ -4,10 +4,10 @@ import {HTTP} from "@ionic-native/http";
 import {Usuario} from "../../models/usuario";
 
 @Component({
-  selector: 'page-userVacantes',
-  templateUrl: 'userVacantes.html'
+  selector: 'page-perfilUsuario',
+  templateUrl: 'perfilUsuario.html'
 })
-export class UserVacantesPage implements OnInit{
+export class PerfilUsuarioPage implements OnInit{
 
     dataurl: any = [];
     data: any = [];
