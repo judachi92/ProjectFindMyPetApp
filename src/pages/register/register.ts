@@ -3,13 +3,13 @@ import {NavController, LoadingController, AlertController, NavParams} from 'ioni
 import {Usuario} from "../../models/usuario";
 import {HTTP} from '@ionic-native/http';
 import {IndexPage} from "../index";
-import { RegisterPage } from '../register/register';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-register',
+  templateUrl: 'register.html'
 })
-export class HomePage {
+
+export class RegisterPage {
 
 
     userModel: Usuario;
@@ -26,55 +26,50 @@ export class HomePage {
         this.userModel = new Usuario();
     }
 
-    signIn2() {
+    signIn() {
         this.navCtrl.setRoot(IndexPage,{
             user: null
         });
     }
 
-    signIn() {
+    signIn2() {
         let loading = this.loadingCtrl.create({
             content: 'Iniciando sesión. Por favor, espere...'
         });
         loading.present();
 
-        this.header['Content-Type'] = 'application/x-www-form-urlencoded';
+        this.header['Cache-Control'] = 'no-cache';
         this.http.clearCookies();
-        this.http.post('http://190.85.111.58:1088/FMpet/public/oauth/token',
-            {
-                client_id:2,
-                client_secret:'UW59wSYQ2bjP5LqS6hAygpfHSzq37jamkKHJI7VX',
-                grant_type:'password',
-                scope:'*',
-                username:this.userModel.username,
-                password:this.userModel.password
-            },
-            this.header)
+        this.http.get('http://181.118.148.8:81/OfertasLaborales/public/loginWebservice?username='
+                        +this.userModel.username+'&password='+this.userModel.password,
+            {},this.header)
             .then(res =>{
                 this.zone.run(()=>{
                     console.log(res.data);
                     this.data=JSON.parse(res.data);
                     loading.dismiss();
-                    
-                    this.userModel.access_token = this.data.access_token;
-                    this.userModel.token_type = this.data.token_type;
-                    this.navCtrl.setRoot(IndexPage,{
-                        user: this.userModel
-                    });
-                
+                    if(this.data != "ERR"){
+                        this.userModel.id = this.data.id;
+                        this.userModel.name = this.data.name;
+                        this.userModel.email = this.data.email;
+                        this.userModel.programa = this.data.programa;
+                        this.userModel.codigo = this.data.codigo;
+
+                        this.navCtrl.setRoot(IndexPage,{
+                            user: this.userModel
+                        });
+                    }else{
+                        this.alert('Autenticacion','Cedula y/o Clave son Incorrectos');
+                    }
                 });
             }).catch(e =>{
                 console.log(e);
                 loading.dismiss();
-                this.alert('Autenticacion','Usuario y/o Clave incorrectos');
+                this.alert('Autenticacion','Error en la conexion: '+e);
             }
         );
     }
 
-
-    goRegistrer(){
-        this.navCtrl.setRoot(RegisterPage);
-    }
     /**
      *
     <button ion-button full (click)="signIn2()">Entrar2</button>

@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>Publicaciones</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="listarPublicaciones()">
+                <ion-icon name="refresh"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-list>
+        <ion-card *ngFor="let objdata of data; let index= index"
+                  detail-push (click)="openWiew(objdata)">
+          
+            <ion-card-content>
+                <p>
+                    hola {{objdata.PERS_NOMBREAPELLIDO}}
+                </p>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+          
+            <ion-card-content>
+                <p>
+                    hola
+                </p>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+
+</ion-content>

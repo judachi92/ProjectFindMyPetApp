@@ -1,8 +1,7 @@
 {
-  "name": "VacantesApp",
-  "app_id": "",
-  "type": "ionic-angular",
+  "name": "FindMyPet",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "ionic-angular"
 }

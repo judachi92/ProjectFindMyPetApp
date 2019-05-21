@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Escaneo QR</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <button ion-button full (click)="scan()">
+        <ion-icon name="qr-scanner"></ion-icon>
+        &nbsp;&nbsp;Escanear Codigo
+    </button>
+    <br>
+    <ion-list *ngIf="vacanteScan">
+        <h3>Información de la Vacante</h3>
+        <ion-item>
+            Codigo: {{vacanteScan.id}}
+        </ion-item>
+        <ion-item>
+            Empresa: {{vacanteScan.Nombre}}
+        </ion-item>
+        <ion-item>
+            Cargo: {{vacanteScan.Cargo}}
+        </ion-item>
+        <ion-item>
+            Direccion: {{vacanteScan.Direccion}}
+        </ion-item>
+        <ion-item>
+            Fecha: {{vacanteScan.Fecha}}
+        </ion-item>
+        <button ion-button full (click)="postularseVacante()">
+            <ion-icon name="checkmark-circle"></ion-icon>
+            &nbsp;&nbsp;Postularse
+        </button>
+    </ion-list>
+
+</ion-content>

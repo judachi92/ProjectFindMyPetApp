@@ -1,14 +1,28 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+  <ion-navbar hideBackButton="true" color="primary">
+    <ion-title>FindMyPet</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+    <ion-card>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label stacked>Usuario</ion-label>
+            <ion-input [(ngModel)]="userModel.username" type="text" autofocus></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>Contraseña</ion-label>
+            <ion-input [(ngModel)]="userModel.password" type="password" name="password" autofocus></ion-input>
+          </ion-item>
+
+          <div padding-left padding-right padding-top>
+            <button ion-button full (click)="signIn()">Ingresar</button>
+            <button ion-button full color="secondary" (click)="goRegistrer()">Registrase</button>
+          </div>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
 </ion-content>

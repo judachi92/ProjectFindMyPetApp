@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar hideBackButton="false" color="primary">
+    <ion-title>Registro de Usuarios</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label stacked>Cedula</ion-label>
+            <ion-input [(ngModel)]="userModel.username" type="number"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>Contraseña</ion-label>
+            <ion-input [(ngModel)]="userModel.password" type="password" name="password" ></ion-input>
+          </ion-item>
+
+          <div padding-left padding-right padding-top>
+            <button ion-button full color="secondary" (click)="signIn()">Registrase</button>
+          </div>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+</ion-content>
