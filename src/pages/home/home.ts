@@ -46,8 +46,8 @@ export class HomePage {
                 client_secret:'UW59wSYQ2bjP5LqS6hAygpfHSzq37jamkKHJI7VX',
                 grant_type:'password',
                 scope:'*',
-                username:this.userModel.username,
-                password:this.userModel.password
+                username:this.userModel.email,
+                password:this.userModel.clave
             },
             this.header)
             .then(res =>{
@@ -73,7 +73,9 @@ export class HomePage {
 
 
     goRegistrer(){
-        this.navCtrl.setRoot(RegisterPage);
+        this.navCtrl.push(RegisterPage, {
+           
+          });
     }
     /**
      *

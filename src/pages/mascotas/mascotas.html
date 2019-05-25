@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>Mis Mascotas</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="listarMascotas()">
+                <ion-icon name="refresh"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="goCrearMascotas()">
+                <ion-icon name="add-circle"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-list >
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="img/thumbnail-puppy-1.jpg">
+          </ion-thumbnail>
+          <h2>pet</h2>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

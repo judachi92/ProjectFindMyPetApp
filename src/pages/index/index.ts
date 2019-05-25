@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import {PublicacionesPage} from "../publicaciones/publicaciones";
-import {ScanQRPage} from "../scanQR/scanQR";
-import {MapaPage} from "../mapa/mapa";
 import {PerfilUsuarioPage} from "../perfilUsuario/perfilUsuario";
 import {NavController, NavParams} from "ionic-angular";
 import {Usuario} from "../../models/usuario";
+import { MascotasPage } from '../mascotas/mascotas';
 
 
 @Component({
@@ -13,9 +12,8 @@ import {Usuario} from "../../models/usuario";
 export class IndexPage {
 
     tab1Root = PublicacionesPage;
-    tab2Root = MapaPage;
-    tab3Root = ScanQRPage;
-    tab4Root =  PerfilUsuarioPage;
+    tab2Root = PerfilUsuarioPage;
+    tab4Root =  MascotasPage;
 
     user: Usuario;
 

@@ -22,6 +22,7 @@
     "@angular/platform-browser": "5.2.10",
     "@angular/platform-browser-dynamic": "5.2.10",
     "@ionic-native/barcode-scanner": "^4.7.0",
+    "@ionic-native/camera": "^4.7.0",
     "@ionic-native/core": "4.7.0",
     "@ionic-native/geolocation": "^4.7.0",
     "@ionic-native/google-maps": "^4.8.2",
@@ -60,6 +61,7 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-camera": {},
       "cordova-plugin-googlemaps": {
         "API_KEY_FOR_ANDROID": "AIzaSyADORKXG4m3x5QqAinpFfHE--M1yGNjueY",
         "PLAY_SERVICES_VERSION": "15.0.1",

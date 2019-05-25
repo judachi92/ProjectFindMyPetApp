@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar hideBackButton="false" color="primary">
+  <ion-navbar color="primary">
     <ion-title>Registro de Usuarios</ion-title>
   </ion-navbar>
 </ion-header>
@@ -10,16 +10,51 @@
         <ion-list>
           <ion-item>
             <ion-label stacked>Cedula</ion-label>
-            <ion-input [(ngModel)]="userModel.username" type="number"></ion-input>
+            <ion-input [(ngModel)]="userModel.cedula" type="number"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>Nombres</ion-label>
+            <ion-input [(ngModel)]="userModel.nombre" ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>Apellidos</ion-label>
+            <ion-input [(ngModel)]="userModel.apellido" ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>Dirección</ion-label>
+            <ion-input [(ngModel)]="userModel.direccion" ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>Telefono</ion-label>
+            <ion-input [(ngModel)]="userModel.telefono" ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>Email</ion-label>
+            <ion-input [(ngModel)]="userModel.email" ></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label stacked>Contraseña</ion-label>
-            <ion-input [(ngModel)]="userModel.password" type="password" name="password" ></ion-input>
+            <ion-input [(ngModel)]="userModel.clave" type="password" name="password" ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>Confirmar Contraseña</ion-label>
+            <ion-input [(ngModel)]="userModel.confirmar_clave" type="password" name="password" ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label><a href="www.google.com">Acepto la Politica de tratamiento de datos</a></ion-label>
+            <ion-checkbox [(ngModel)]="userModel.politica"></ion-checkbox>
           </ion-item>
 
           <div padding-left padding-right padding-top>
-            <button ion-button full color="secondary" (click)="signIn()">Registrase</button>
+            <button ion-button full color="secondary" (click)="registrarUsuario()">Registrase</button>
           </div>
         </ion-list>
       </ion-card-content>

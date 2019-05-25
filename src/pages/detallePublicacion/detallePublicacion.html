@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Detalle Publicación</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="crearComentario()">
+            <ion-icon name="add-circle"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+  
+</ion-header>
+
+<ion-content>
+
+    <ion-card>
+
+      <ion-item>
+        <ion-avatar item-start>
+        <img src="https://cdn4.iconfinder.com/data/icons/rcons-user/32/boss_man-512.png">
+        </ion-avatar>
+        <h2>{{publicacion.PERS_NOMBREAPELLIDO}} - {{publicacion.mascota.MASC_NOMBRE}}</h2>
+        <p>{{publicacion.PUBL_FECHACREADO}}</p>
+      </ion-item>
+
+      <ion-slides pager>
+        <ion-slide *ngFor="let imagen of publicacion.adjuntos">
+            <img style="width: 100%" src="{{imagen.url}}">
+        </ion-slide>
+      </ion-slides>
+
+      <ion-card-content>
+        <p>
+            {{publicacion.PUBL_DESCRIPCION}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-row>
+      <h3>Comentarios de la publicación</h3>
+    </ion-row>
+    <ion-card *ngFor="let comentario of publicacion.comentarios">
+        <ion-item>
+            <ion-avatar item-start>
+            <img src="https://cdn4.iconfinder.com/data/icons/rcons-user/32/boss_man-512.png">
+            </ion-avatar>
+            <h2>{{comentario.COME_CREADOPOR}}</h2>
+            <p>{{comentario.COME_FECHACREADO}}</p>
+        </ion-item>
+        <ion-card-content>
+            <p>
+                {{comentario.COME_DESCRIPCION}}
+            </p>
+          </ion-card-content>
+    </ion-card>
+    
+</ion-content>
