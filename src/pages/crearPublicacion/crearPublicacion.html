@@ -5,14 +5,32 @@
 </ion-header>
 
 <ion-content>
-    <ion-card>
-      <ion-card-content>
-        <ion-list>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label stacked>Descripcion</ion-label>
+          <ion-textarea [(ngModel)]="publicacionModel.descripcion" ></ion-textarea>
+        </ion-item>
 
-          <div padding-left padding-right padding-top>
-            <button ion-button full color="primary" (click)="registrarUsuario()">Grabar</button>
-          </div>
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
+        <ion-item>
+          <ion-label stacked>Lugar</ion-label>
+          <ion-input [(ngModel)]="publicacionModel.barrio" ></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label stacked>Mascota</ion-label>
+          <ion-select [(ngModel)]="publicacionModel.mascota_id">
+            <ion-option value="1">PET</ion-option>
+            <ion-option value="2">DOGGY</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <div padding-left padding-right padding-top>
+          <button ion-button full color="primary" (click)="registrarMascota()">Grabar</button>
+        </div>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

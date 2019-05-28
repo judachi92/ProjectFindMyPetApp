@@ -3,6 +3,7 @@ import {NavController, LoadingController, AlertController, NavParams} from 'ioni
 import {Usuario} from "../../models/usuario";
 import {HTTP} from '@ionic-native/http';
 import {IndexPage} from "../index/index";
+import { Publicacion } from '../../models/publicacion';
 
 @Component({
   selector: 'page-crearPublicacion',
@@ -13,7 +14,7 @@ export class CrearPublicacionPage {
 
 
     userSession: Usuario;
-    publicacion:any={};
+    publicacionModel:Publicacion;
 
     header: any = {};
     data: any = {};
@@ -27,7 +28,7 @@ export class CrearPublicacionPage {
         public zone: NgZone,) {
 
             this.userSession = navParams.data.user;
-            this.publicacion = navParams.data.publicacion;
+            this.publicacionModel = new Publicacion();
     }
 
    

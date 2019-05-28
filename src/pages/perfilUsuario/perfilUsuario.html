@@ -1,64 +1,56 @@
 <ion-header>
     <ion-navbar color="secondary">
         <ion-title>Perfil Usuario</ion-title>
-        <ion-buttons end>
-            <button ion-button icon-only (click)="listarVacantesxUsuario()">
-                <ion-icon name="refresh"></ion-icon>
-            </button>
-        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <ion-list>
-        <ion-item>
-            Nombre: {{userSession.name}}
-        </ion-item>
-        <ion-item>
-            Cedula: {{userSession.username}}
-        </ion-item>
-        <ion-item>
-            Programa: {{userSession.programa}}
-        </ion-item>
-        <ion-item>
-            Codigo: {{userSession.codigo}}
-        </ion-item>
-        <ion-item>
-            Email: {{userSession.email}}
-        </ion-item>
-
-        <ion-item>
-            access_token: {{userSession.access_token}}
-        </ion-item>
-        <ion-item>
-            token_type: {{userSession.token_type}}
-        </ion-item>
-
-
-        <ion-item>
-            Listado de Vacantes Solicitadas
-        </ion-item>
-    </ion-list>
-
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-    <ion-list>
-        <ion-card *ngFor="let objdata of data; let index= index"
-                  detail-push (click)="openWiew(objdata)">
+    <ion-card>
+        <ion-card-content>
+          <ion-list>
             <ion-item>
-                <ion-icon name='briefcase' style="width: 20%"></ion-icon>
-                <h2>Cargo: {{objdata.Cargo}}</h2>
+              <ion-label stacked>Cedula</ion-label>
+              <ion-input [(ngModel)]="userSession.cedula" type="number"></ion-input>
             </ion-item>
-            <ion-card-content>
-                <p>
-                    <b>Codigo:</b> {{objdata.id}} <br>
-                    <b>Empresa:</b> {{objdata.Nombre}} <br>
-                    <b>Nit:</b> {{objdata.NIT}} <br>
-                    <b>Direccion:</b> {{objdata.Direccion}} <br>
-                    <b>Fecha Vacante:</b> {{objdata.Fecha}} <br>
-                    <b>Salario:</b> {{objdata.Sueldo}} <br>
-                </p>
-            </ion-card-content>
-        </ion-card>
-    </ion-list>
-
+  
+            <ion-item>
+              <ion-label stacked>Nombres</ion-label>
+              <ion-input [(ngModel)]="userSession.nombre" ></ion-input>
+            </ion-item>
+  
+            <ion-item>
+              <ion-label stacked>Apellidos</ion-label>
+              <ion-input [(ngModel)]="userSession.apellido" ></ion-input>
+            </ion-item>
+  
+            <ion-item>
+              <ion-label stacked>Dirección</ion-label>
+              <ion-input [(ngModel)]="userSession.direccion" ></ion-input>
+            </ion-item>
+  
+            <ion-item>
+              <ion-label stacked>Telefono</ion-label>
+              <ion-input [(ngModel)]="userSession.telefono" ></ion-input>
+            </ion-item>
+  
+            <ion-item>
+              <ion-label stacked>Email</ion-label>
+              <ion-input [(ngModel)]="userSession.email" ></ion-input>
+            </ion-item>
+  
+            <ion-item>
+              <ion-label stacked>Contraseña</ion-label>
+              <ion-input [(ngModel)]="userSession.clave" type="password" name="password" ></ion-input>
+            </ion-item>
+  
+            <ion-item>
+              <ion-label stacked>Confirmar Contraseña</ion-label>
+              <ion-input [(ngModel)]="userSession.confirmar_clave" type="password" name="password" ></ion-input>
+            </ion-item>
+            <div padding-left padding-right padding-top>
+              <button ion-button full color="secondary" (click)="ActualizarUsuario()">Actualizar Datos</button>
+            </div>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
 </ion-content>

@@ -2,6 +2,7 @@ import {Component, NgZone, OnInit} from '@angular/core';
 import {AlertController, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {Usuario} from "../../models/usuario";
 import {HTTP} from "@ionic-native/http";
+import { CrearMascotasPage } from '../crearMascotas/crearMascotas';
 
 @Component({
   selector: 'page-mascotas',
@@ -91,9 +92,9 @@ export class MascotasPage implements OnInit{
 
     }
     goCrearMascotas(){
-        /*this.navCtrl.push(CrearPublicacionPage,{
+        this.navCtrl.push(CrearMascotasPage,{
             user: this.userSession 
-        });*/
+        });
     }
 
     alert(title: string, message: string) {

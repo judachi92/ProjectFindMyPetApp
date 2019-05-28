@@ -8,6 +8,15 @@
     <ion-card>
       <ion-card-content>
         <ion-list>
+          <ion-item>
+            <ion-label stacked>Nombres</ion-label>
+            <ion-input [(ngModel)]="mascotaModel.nombre" ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>Edad</ion-label>
+            <ion-input [(ngModel)]="mascotaModel.edad" type="number"></ion-input>
+          </ion-item>
 
           <div padding-left padding-right padding-top>
             <button ion-button full color="primary" (click)="registrarMascota()">Grabar</button>

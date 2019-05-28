@@ -1,6 +1,6 @@
 export class Mascota {
     id:number;
-    Nombre: string;
+    nombre: string;
     edad: string;
     person_id: number;
 

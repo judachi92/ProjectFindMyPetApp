@@ -18,13 +18,14 @@ import {RegisterPage} from "../pages/register/register";
 import {DetallePublicacionPage} from "../pages/detallePublicacion/detallePublicacion";
 import {CrearPublicacionPage} from "../pages/crearPublicacion/crearPublicacion";
 import { MascotasPage } from '../pages/mascotas/mascotas';
+import { CrearMascotasPage } from '../pages/crearMascotas/crearMascotas';
 
 
 @NgModule({
     declarations: [
         MyApp,
         HomePage,
-        IndexPage, PerfilUsuarioPage, MascotasPage,
+        IndexPage, PerfilUsuarioPage, MascotasPage, CrearMascotasPage,
         PublicacionesPage, RegisterPage, DetallePublicacionPage,
         CrearPublicacionPage
     ],
@@ -35,7 +36,7 @@ import { MascotasPage } from '../pages/mascotas/mascotas';
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
-        HomePage, IndexPage, PerfilUsuarioPage, MascotasPage,
+        HomePage, IndexPage, PerfilUsuarioPage, MascotasPage, CrearMascotasPage,
         PublicacionesPage, RegisterPage, DetallePublicacionPage,
         CrearPublicacionPage
     ],

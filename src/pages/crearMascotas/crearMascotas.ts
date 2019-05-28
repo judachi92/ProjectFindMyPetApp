@@ -10,7 +10,7 @@ import { Mascota } from '../../models/mascota';
   templateUrl: 'crearMascotas.html'
 })
 
-export class CrearMascotas {
+export class CrearMascotasPage {
 
 
     userSession: Usuario;
@@ -28,6 +28,7 @@ export class CrearMascotas {
         public zone: NgZone,) {
 
             this.userSession = navParams.data.user;
+            this.mascotaModel = new Mascota();
     }
 
    
