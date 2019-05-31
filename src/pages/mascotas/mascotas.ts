@@ -3,6 +3,7 @@ import {AlertController, LoadingController, NavController, NavParams} from 'ioni
 import {Usuario} from "../../models/usuario";
 import {HTTP} from "@ionic-native/http";
 import { CrearMascotasPage } from '../crearMascotas/crearMascotas';
+import { ActualizarMascotas } from '../actualizarMascotas/actualizarMascotas';
 
 @Component({
   selector: 'page-mascotas',
@@ -22,7 +23,9 @@ export class MascotasPage implements OnInit{
                 public zone: NgZone,
                 public loadingCtr:LoadingController)
     {
+        this.userSession = new Usuario();
         this.userSession = navParams.data;
+        console.log(this.userSession);
     }
 
     ngOnInit(): void {
@@ -31,20 +34,20 @@ export class MascotasPage implements OnInit{
 
     listarMascotas(){
         let loading = this.loadingCtr.create({
-            content: 'Consultando las Publicaciones...'
+            content: 'Consultando las Mascotas por usuario...'
         });
         loading.present();
         this.header['Accept'] = 'application/json';
         this.header['Authorization'] = this.userSession.token_type+' '+this.userSession.access_token;
         this.http.clearCookies();
-        this.http.get('http://190.85.111.58:1088/FMpet/public/api/core/mascotas?limit=15',
+        this.http.get('http://190.85.111.58:1088/FMpet/public/api/core/mascotas?limit=999&PERS_ID='+this.userSession.id,
             {},this.header)
             .then(res =>{
                 this.zone.run(()=>{
                     this.dataurl=JSON.parse(res.data);
                     
                     this.data = this.dataurl.data;
-                    
+                    console.log(this.data);
                     loading.dismiss();
                 });
             }).catch(e =>{
@@ -59,9 +62,8 @@ export class MascotasPage implements OnInit{
         var val = ev.target.value;
         if (val && val.trim() != '') {
             this.data = this.data.filter(item =>  {
-                return (item.PERS_NOMBREAPELLIDO.toLowerCase().indexOf(val.toLowerCase()) > -1) ||
-                    (item.PUBL_DESCRIPCION.toLowerCase().indexOf(val.toLowerCase()) > -1) ||
-                    ((''+item.PUBL_FECHACREADO).toLowerCase().indexOf(val.toLowerCase()) > -1);
+                return (item.MASC_NOMBRE.toLowerCase().indexOf(val.toLowerCase()) > -1) ||
+                    (item.MASC_EDAD.toLowerCase().indexOf(val.toLowerCase()) > -1);
             });
         }
     }
@@ -89,7 +91,10 @@ export class MascotasPage implements OnInit{
         alert.present();
     }
     goEditarMascotas(mascota){
-
+        this.navCtrl.push(ActualizarMascotas,{
+            user: this.userSession ,
+            mascota: mascota
+        });
     }
     goCrearMascotas(){
         this.navCtrl.push(CrearMascotasPage,{

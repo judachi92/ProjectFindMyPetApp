@@ -8,7 +8,7 @@ export class Usuario {
     confirmar_clave: string;
     email:string;
     telefono:string;
-
+    username:string;
     politica:boolean;
 
     access_token:string;

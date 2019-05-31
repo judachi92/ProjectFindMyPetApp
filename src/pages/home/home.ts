@@ -15,13 +15,13 @@ export class HomePage {
     userModel: Usuario;
     header: any = {};
     data: any = {};
-
+    json: any = {};
     constructor(
         public navCtrl: NavController,
         public loadingCtrl: LoadingController,
         public alertCtrl: AlertController,
         public navParams: NavParams,
-        public http: HTTP,
+        public http: HTTP,public http2: HTTP,
         public zone: NgZone,) {
         this.userModel = new Usuario();
     }
@@ -54,14 +54,42 @@ export class HomePage {
                 this.zone.run(()=>{
                     console.log(res.data);
                     this.data=JSON.parse(res.data);
-                    loading.dismiss();
                     
                     this.userModel.access_token = this.data.access_token;
                     this.userModel.token_type = this.data.token_type;
-                    this.navCtrl.setRoot(IndexPage,{
-                        user: this.userModel
-                    });
-                
+
+                    this.header={};
+                    this.header['Accept'] = ':application/json';
+                    this.header['Authorization'] = this.userModel.token_type+' '+this.userModel.access_token;
+                        
+                    this.http2.clearCookies();
+                    this.http2.get('http://190.85.111.58:1088/FMpet/public/api/getPersonaUser ',
+                        {}, this.header).then(res2 =>{
+                            this.zone.run(()=>{
+                                console.log(res2.data);
+                                this.json=JSON.parse(res2.data);
+                                loading.dismiss();
+                                this.userModel.nombre = this.json.data.name;
+                                this.userModel.apellido = this.json.data.name;
+                                this.userModel.email = this.json.data.email;
+                                this.userModel.username = this.json.data.username;
+                                this.userModel.id=this.json.data.id;
+                                this.userModel.cedula="";
+                                this.userModel.telefono="";
+                                this.userModel.direccion='';
+                                this.userModel.clave="";
+                                this.userModel.confirmar_clave="";
+                                this.navCtrl.setRoot(IndexPage,{
+                                    user: this.userModel
+                                });
+                                
+                            });
+                        }).catch(e =>{
+                            console.log(e);
+                            loading.dismiss();
+                            this.alert('Error',e);
+                        }
+                    );
                 });
             }).catch(e =>{
                 console.log(e);

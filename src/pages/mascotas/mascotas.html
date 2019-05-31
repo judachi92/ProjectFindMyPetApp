@@ -15,18 +15,17 @@
 <ion-content>
     <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
     <ion-list >
-        <ion-item>
+        <ion-item *ngFor="let objdata of data; let index= index" 
+        (click)="goEditarMascotas(objdata)">
           <ion-thumbnail item-start>
             <img src="img/thumbnail-puppy-1.jpg">
           </ion-thumbnail>
-          <h2>PET</h2>
+          <h2>{{objdata.MASC_NOMBRE}}</h2>
+          <p>
+            Edad: {{objdata.MASC_EDAD}} <br>
+            Tipo: {{objdata.MASC_TIPO}}
+          </p>
         </ion-item>
-        <ion-item>
-            <ion-thumbnail item-start>
-              <img src="img/thumbnail-puppy-1.jpg">
-            </ion-thumbnail>
-            <h2>DOGGY</h2>
-          </ion-item>
     </ion-list>
 
 </ion-content>

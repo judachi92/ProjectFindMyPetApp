@@ -21,7 +21,10 @@ export class PerfilUsuarioPage implements OnInit{
                 public zone: NgZone,
                 public loadingCtr:LoadingController )
     {
+        
+        this.userSession = new Usuario();
         this.userSession = navParams.data;
+        console.log(this.userSession);
     }
 
     ngOnInit(): void {

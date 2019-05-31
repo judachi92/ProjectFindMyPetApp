@@ -10,17 +10,12 @@
           <ion-list>
             <ion-item>
               <ion-label stacked>Cedula</ion-label>
-              <ion-input [(ngModel)]="userSession.cedula" type="number"></ion-input>
+              <ion-input [(ngModel)]="userSession.cedula" type="number" readonly></ion-input>
             </ion-item>
   
             <ion-item>
-              <ion-label stacked>Nombres</ion-label>
-              <ion-input [(ngModel)]="userSession.nombre" ></ion-input>
-            </ion-item>
-  
-            <ion-item>
-              <ion-label stacked>Apellidos</ion-label>
-              <ion-input [(ngModel)]="userSession.apellido" ></ion-input>
+              <ion-label stacked>Nombre</ion-label>
+              <ion-input [(ngModel)]="userSession.nombre" readonly></ion-input>
             </ion-item>
   
             <ion-item>
@@ -47,6 +42,7 @@
               <ion-label stacked>Confirmar Contraseña</ion-label>
               <ion-input [(ngModel)]="userSession.confirmar_clave" type="password" name="password" ></ion-input>
             </ion-item>
+            
             <div padding-left padding-right padding-top>
               <button ion-button full color="secondary" (click)="ActualizarUsuario()">Actualizar Datos</button>
             </div>

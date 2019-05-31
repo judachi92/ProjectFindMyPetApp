@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar hideBackButton="false" color="secondary">
-    <ion-title>Registro de Mascotas</ion-title>
+  <ion-navbar hideBackButton="false" color="primary">
+    <ion-title>Actualizacion de Mascotas</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -31,9 +31,11 @@
                 <ion-textarea [(ngModel)]="mascotaModel.descripcion" ></ion-textarea>
               </ion-item>
 
-
           <div padding-left padding-right padding-top>
-            <button ion-button full color="primary" (click)="registrarMascota()">Grabar</button>
+            <button ion-button full color="secondary" (click)="actualizarMascota()">Actualizar</button>
+          </div>
+          <div padding-left padding-right padding-top>
+            <button ion-button full color="warning" (click)="goEliminarMascota()">Actualizar</button>
           </div>
         </ion-list>
       </ion-card-content>

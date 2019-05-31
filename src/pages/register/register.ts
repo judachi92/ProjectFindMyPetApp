@@ -60,9 +60,9 @@ export class RegisterPage {
         });
         loading.present();
 
-        this.header['Content-Type'] = 'application/form-data';
+        this.header['Accept'] = ':application/json';
         this.http.clearCookies();
-        this.http.post('http://190.85.111.58:1088/FMpet/public/api/users',
+        this.http.post('http://190.85.111.58:1088/FMpet/api/users',
             {
                 nombres: this.userModel.nombre,
                 apellidos: this.userModel.apellido,

@@ -19,6 +19,7 @@ import {DetallePublicacionPage} from "../pages/detallePublicacion/detallePublica
 import {CrearPublicacionPage} from "../pages/crearPublicacion/crearPublicacion";
 import { MascotasPage } from '../pages/mascotas/mascotas';
 import { CrearMascotasPage } from '../pages/crearMascotas/crearMascotas';
+import { ActualizarMascotas } from '../pages/actualizarMascotas/actualizarMascotas';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { CrearMascotasPage } from '../pages/crearMascotas/crearMascotas';
         HomePage,
         IndexPage, PerfilUsuarioPage, MascotasPage, CrearMascotasPage,
         PublicacionesPage, RegisterPage, DetallePublicacionPage,
-        CrearPublicacionPage
+        CrearPublicacionPage, ActualizarMascotas
     ],
     imports: [
         BrowserModule,
@@ -38,7 +39,7 @@ import { CrearMascotasPage } from '../pages/crearMascotas/crearMascotas';
         MyApp,
         HomePage, IndexPage, PerfilUsuarioPage, MascotasPage, CrearMascotasPage,
         PublicacionesPage, RegisterPage, DetallePublicacionPage,
-        CrearPublicacionPage
+        CrearPublicacionPage, ActualizarMascotas
     ],
     providers: [
         BarcodeScanner,
