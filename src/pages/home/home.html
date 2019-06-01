@@ -6,6 +6,10 @@
 
 <ion-content>
     <ion-card>
+      <ion-item  style=" text-align: -webkit-center;">
+          <img style="width: 70%; " src="http://190.85.111.58:1088/FMpet/public/images/logo_findmypet_icon.png">
+      </ion-item>
+
       <ion-card-content>
         <ion-list>
           <ion-item>
@@ -19,8 +23,14 @@
           </ion-item>
 
           <div padding-left padding-right padding-top>
-            <button ion-button full (click)="signIn()">Ingresar</button>
-            <button ion-button full color="secondary" (click)="goRegistrer()">Registrase</button>
+            <button ion-button full icon-start (click)="signIn()">
+                <ion-icon name="log-in"></ion-icon>
+                Ingresar
+            </button>
+            <button ion-button full icon-start color="secondary" (click)="goRegistrer()">
+              <ion-icon name="create"></ion-icon>
+              Registrase
+            </button>
           </div>
         </ion-list>
       </ion-card-content>

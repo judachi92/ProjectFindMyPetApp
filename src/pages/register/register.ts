@@ -4,7 +4,7 @@ import {Usuario} from "../../models/usuario";
 import {HTTP} from '@ionic-native/http';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { IndexPage } from '../index';
+import { HomePage } from '../home/home';
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html'
@@ -29,7 +29,7 @@ export class RegisterPage {
         this.userModel = new Usuario();
     }
 
-    /*getPicture(){
+    getPicture(){
         let options: CameraOptions = {
             destinationType: this.camera.DestinationType.DATA_URL,
             targetWidth: 1000,
@@ -43,7 +43,7 @@ export class RegisterPage {
         .catch(error =>{
             console.error( error );
         });
-    }*/
+    }
     
     alert(title: string, message: string) {
         let alert = this.alertCtrl.create({
@@ -62,7 +62,7 @@ export class RegisterPage {
 
         this.header['Accept'] = ':application/json';
         this.http.clearCookies();
-        this.http.post('http://190.85.111.58:1088/FMpet/api/users',
+        this.http.post('http://190.85.111.58:1088/FMpet/public/api/users',
             {
                 nombres: this.userModel.nombre,
                 apellidos: this.userModel.apellido,
@@ -81,9 +81,7 @@ export class RegisterPage {
                     loading.dismiss();
                     if(this.data.status){
                         this.alert('Registro','El Usuario ha sido registrado exitosamente');
-                        this.navCtrl.setRoot(IndexPage,{
-                            user: this.userModel
-                        });
+                        this.navCtrl.setRoot(HomePage,{});
                     }else{
                         this.alert('Error Registro',this.data.messge);
                     }

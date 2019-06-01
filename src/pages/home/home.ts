@@ -46,7 +46,7 @@ export class HomePage {
                 client_secret:'UW59wSYQ2bjP5LqS6hAygpfHSzq37jamkKHJI7VX',
                 grant_type:'password',
                 scope:'*',
-                username:this.userModel.email,
+                username:(this.userModel.email).toLowerCase(),
                 password:this.userModel.clave
             },
             this.header)
@@ -74,6 +74,11 @@ export class HomePage {
                                 this.userModel.email = this.json.data.email;
                                 this.userModel.username = this.json.data.username;
                                 this.userModel.id=this.json.data.id;
+                                if(this.json.data.persona){
+                                    this.userModel.persona_id =this.json.data.persona.PERS_ID; 
+                                }else{
+                                    this.userModel.persona_id = this.json.data.id;
+                                }
                                 this.userModel.cedula="";
                                 this.userModel.telefono="";
                                 this.userModel.direccion='';

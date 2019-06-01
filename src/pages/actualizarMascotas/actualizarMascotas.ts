@@ -35,7 +35,7 @@ export class ActualizarMascotas {
             this.mascotaModel.edad = mascotaJson.MASC_EDAD;
             this.mascotaModel.tipo = mascotaJson.MASC_TIPO;
             this.mascotaModel.descripcion = mascotaJson.MASC_DESCRIPCION;
-            this.mascotaModel.person_id = this.userSession.id;
+            this.mascotaModel.person_id = mascotaJson.PERS_ID;
     }
 
    
@@ -64,7 +64,7 @@ export class ActualizarMascotas {
                 MASC_EDAD: this.mascotaModel.edad,
                 MASC_TIPO: this.mascotaModel.tipo,
                 MASC_DESCRIPCION: this.mascotaModel.descripcion,
-                PERS_ID: this.userSession.id
+                PERS_ID: this.mascotaModel.person_id
             },
             this.header)
             .then(res =>{
@@ -124,7 +124,7 @@ export class ActualizarMascotas {
                 MASC_EDAD: this.mascotaModel.edad,
                 MASC_TIPO: this.mascotaModel.tipo,
                 MASC_DESCRIPCION: this.mascotaModel.descripcion,
-                PERS_ID: this.userSession.id
+                PERS_ID: this.mascotaModel.person_id
             },
             this.header)
             .then(res =>{

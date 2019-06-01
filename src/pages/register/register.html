@@ -8,6 +8,15 @@
     <ion-card>
       <ion-card-content>
         <ion-list>
+
+          <ion-item>
+              <img [src]="image" style="width: 300px; border-radius: 5%;" *ngIf="image" />
+              <button ion-button full icon-start color="primary" (click)="getPicture()" >
+                  <ion-icon name="camera"></ion-icon>
+                  Tomar Foto
+                </button>                 
+          </ion-item>
+
           <ion-item>
             <ion-label stacked>Cedula</ion-label>
             <ion-input [(ngModel)]="userModel.cedula" type="number"></ion-input>
@@ -56,6 +65,8 @@
           <div padding-left padding-right padding-top>
             <button ion-button full color="secondary" (click)="registrarUsuario()">Registrase</button>
           </div>
+
+          
         </ion-list>
       </ion-card-content>
     </ion-card>

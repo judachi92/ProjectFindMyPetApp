@@ -10,6 +10,7 @@ export class Usuario {
     telefono:string;
     username:string;
     politica:boolean;
+    persona_id:number;
 
     access_token:string;
     token_type:string;
