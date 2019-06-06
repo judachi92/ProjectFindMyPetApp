@@ -17,7 +17,8 @@ export class CrearPublicacionPage {
     publicacionModel:Publicacion;
 
     header: any = {};
-    data: any = {};
+    list_mascotas: any = {};
+    dataurl: any = {};
 
     constructor(
         public navCtrl: NavController,
@@ -29,6 +30,8 @@ export class CrearPublicacionPage {
 
             this.userSession = navParams.data.user;
             this.publicacionModel = new Publicacion();
+
+            this.getMascotasPersona();
     }
 
    
@@ -39,6 +42,30 @@ export class CrearPublicacionPage {
             buttons: ['OK']
         });
         alert.present();
+    }
+
+    getMascotasPersona(){
+        let loading = this.loadingCtrl.create({
+            content: 'Consultando las Mascotas por usuario...'
+        });
+        loading.present();
+        this.header['Accept'] = 'application/json';
+        this.header['Authorization'] = this.userSession.token_type+' '+this.userSession.access_token;
+        this.http.clearCookies();
+        this.http.get('http://190.85.111.58:1088/FMpet/public/api/core/mascotas?limit=999&PERS_ID='+this.userSession.id,
+            {},this.header)
+            .then(res =>{
+                this.zone.run(()=>{
+                    this.dataurl=JSON.parse(res.data);
+                    
+                    this.list_mascotas = this.dataurl.data;
+                    console.log(this.list_mascotas);
+                    loading.dismiss();
+                });
+            }).catch(e =>{
+                this.alert('error',''+e);
+                loading.dismiss();
+            });
     }
 
 }

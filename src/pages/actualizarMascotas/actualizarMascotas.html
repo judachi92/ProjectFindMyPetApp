@@ -8,6 +8,15 @@
     <ion-card>
       <ion-card-content>
         <ion-list>
+
+          <ion-item>
+              <img [src]="image" style="width: 300px; border-radius: 5%;" *ngIf="image" />
+              <button ion-button full icon-start color="primary" (click)="getPicture()" >
+                <ion-icon name="camera"></ion-icon>
+                Tomar Nueva Foto
+              </button>                  
+          </ion-item>
+
           <ion-item>
             <ion-label stacked>Nombres</ion-label>
             <ion-input [(ngModel)]="mascotaModel.nombre" ></ion-input>
@@ -32,10 +41,16 @@
               </ion-item>
 
           <div padding-left padding-right padding-top>
-            <button ion-button full color="secondary" (click)="actualizarMascota()">Actualizar</button>
+            <button ion-button full icon-start color="secondary" (click)="actualizarMascota()">
+                <ion-icon name="create"></ion-icon>
+              Actualizar
+            </button>
           </div>
           <div padding-left padding-right padding-top>
-            <button ion-button full color="warning" (click)="goEliminarMascota()">Actualizar</button>
+            <button ion-button full icon-start color="danger" (click)="goEliminarMascota()">
+                <ion-icon name="trash"></ion-icon>
+              Eliminar
+            </button>
           </div>
         </ion-list>
       </ion-card-content>

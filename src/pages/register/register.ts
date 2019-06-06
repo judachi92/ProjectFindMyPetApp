@@ -61,6 +61,7 @@ export class RegisterPage {
         loading.present();
 
         this.header['Accept'] = ':application/json';
+        this.header['Content-Type'] = 'multipart/form-data';
         this.http.clearCookies();
         this.http.post('http://190.85.111.58:1088/FMpet/public/api/users',
             {
@@ -71,7 +72,8 @@ export class RegisterPage {
                 direccion: this.userModel.direccion,
                 telefono: this.userModel.telefono,
                 password:this.userModel.clave,
-                password_confirmation:this.userModel.confirmar_clave
+                password_confirmation:this.userModel.confirmar_clave,
+                avatar: this.image
             },
             this.header)
             .then(res =>{

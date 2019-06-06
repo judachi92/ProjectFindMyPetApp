@@ -22,8 +22,7 @@
         <ion-item>
           <ion-label stacked>Mascota</ion-label>
           <ion-select [(ngModel)]="publicacionModel.mascota_id">
-            <ion-option value="1">PET</ion-option>
-            <ion-option value="2">DOGGY</ion-option>
+            <ion-option *ngFor="let mascota of list_mascotas" value="{{mascota.MASC_ID}}">{{mascota.MASC_NOMBRE}}</ion-option>
           </ion-select>
         </ion-item>
 

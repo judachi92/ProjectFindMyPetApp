@@ -8,6 +8,11 @@
     <ion-card>
         <ion-card-content>
           <ion-list>
+
+            <ion-item>
+                <img src="{{userSession.avatar}}" style="width: 300px; border-radius: 5%;" />
+            </ion-item>
+
             <ion-item>
               <ion-label stacked>Cedula</ion-label>
               <ion-input [(ngModel)]="userSession.cedula" type="number" readonly></ion-input>
@@ -15,8 +20,13 @@
   
             <ion-item>
               <ion-label stacked>Nombre</ion-label>
-              <ion-input [(ngModel)]="userSession.nombre" readonly></ion-input>
+              <ion-input [(ngModel)]="userSession.nombre" ></ion-input>
             </ion-item>
+
+            <ion-item>
+                <ion-label stacked>Apellidos</ion-label>
+                <ion-input [(ngModel)]="userSession.apellido" ></ion-input>
+              </ion-item>
   
             <ion-item>
               <ion-label stacked>Dirección</ion-label>
@@ -30,7 +40,7 @@
   
             <ion-item>
               <ion-label stacked>Email</ion-label>
-              <ion-input [(ngModel)]="userSession.email" ></ion-input>
+              <ion-input [(ngModel)]="userSession.email" readonly ></ion-input>
             </ion-item>
   
             <ion-item>

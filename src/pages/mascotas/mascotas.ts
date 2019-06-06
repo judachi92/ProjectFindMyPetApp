@@ -40,7 +40,7 @@ export class MascotasPage implements OnInit{
         this.header['Accept'] = 'application/json';
         this.header['Authorization'] = this.userSession.token_type+' '+this.userSession.access_token;
         this.http.clearCookies();
-        this.http.get('http://190.85.111.58:1088/FMpet/public/api/core/mascotas?limit=999&PERS_ID='+this.userSession.id,
+        this.http.get('http://190.85.111.58:1088/FMpet/public/api/core/mascotas?limit=999&PERS_ID='+this.userSession.persona_id,
             {},this.header)
             .then(res =>{
                 this.zone.run(()=>{
@@ -63,33 +63,12 @@ export class MascotasPage implements OnInit{
         if (val && val.trim() != '') {
             this.data = this.data.filter(item =>  {
                 return (item.MASC_NOMBRE.toLowerCase().indexOf(val.toLowerCase()) > -1) ||
-                    (item.MASC_EDAD.toLowerCase().indexOf(val.toLowerCase()) > -1);
+                    (item.MASC_TIPO.toLowerCase().indexOf(val.toLowerCase()) > -1) ||
+                    ((''+item.MASC_EDAD).toLowerCase().indexOf(val.toLowerCase()) > -1);
             });
         }
     }
 
-    openWiew(objData){
-        let alert = this.alertCtrl.create({
-            title: 'Macotas',
-            message: 'Deseas editar la informacion de la mascota',
-            buttons: [
-                {
-                    text: 'Cancelar',
-                    role: 'cancel',
-                    handler: () => {
-                        console.log('Cancel clicked');
-                    }
-                },
-                {
-                    text: 'Aceptar',
-                    handler: () => {
-                        this.goEditarMascotas(objData);
-                    }
-                }
-            ]
-        });
-        alert.present();
-    }
     goEditarMascotas(mascota){
         this.navCtrl.push(ActualizarMascotas,{
             user: this.userSession ,

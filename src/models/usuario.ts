@@ -11,6 +11,7 @@ export class Usuario {
     username:string;
     politica:boolean;
     persona_id:number;
+    avatar:string;
 
     access_token:string;
     token_type:string;

@@ -69,19 +69,20 @@ export class HomePage {
                                 console.log(res2.data);
                                 this.json=JSON.parse(res2.data);
                                 loading.dismiss();
-                                this.userModel.nombre = this.json.data.name;
-                                this.userModel.apellido = this.json.data.name;
-                                this.userModel.email = this.json.data.email;
+                                this.userModel.nombre = this.json.data.persona.PERS_NOMBRE;
+                                this.userModel.apellido = this.json.data.persona.PERS_APELLIDO;
+                                this.userModel.email = this.json.data.persona.PERS_CORREO;
                                 this.userModel.username = this.json.data.username;
+                                this.userModel.avatar = this.json.data.avatar;
                                 this.userModel.id=this.json.data.id;
                                 if(this.json.data.persona){
                                     this.userModel.persona_id =this.json.data.persona.PERS_ID; 
                                 }else{
                                     this.userModel.persona_id = this.json.data.id;
                                 }
-                                this.userModel.cedula="";
-                                this.userModel.telefono="";
-                                this.userModel.direccion='';
+                                this.userModel.cedula=this.json.data.persona.PERS_NUMEROIDENTIFICACION;
+                                this.userModel.telefono=this.json.data.persona.PERS_TELEFONO;
+                                this.userModel.direccion=this.json.data.persona.PERS_DIRECCION;
                                 this.userModel.clave="";
                                 this.userModel.confirmar_clave="";
                                 this.navCtrl.setRoot(IndexPage,{
@@ -110,20 +111,6 @@ export class HomePage {
            
           });
     }
-    /**
-     *
-    <button ion-button full (click)="signIn2()">Entrar2</button>
-    signIn2(){
-        this.userModel.id = 3;
-        this.userModel.username = '11111111';
-        this.userModel.name = "Estudiante de pruebas";
-        this.userModel.email = "estudiante@outlook.com";
-
-        this.navCtrl.setRoot(IndexPage,{
-            user: this.userModel
-        });
-    }**/
-
 
     alert(title: string, message: string) {
         let alert = this.alertCtrl.create({
