@@ -9,7 +9,7 @@ import { CrearPublicacionPage } from '../crearPublicacion/crearPublicacion';
   selector: 'page-publicaciones',
   templateUrl: 'publicaciones.html'
 })
-export class PublicacionesPage implements OnInit{
+export class PublicacionesPage{
 
     dataurl: any = [];
     data: any = [];
@@ -24,9 +24,6 @@ export class PublicacionesPage implements OnInit{
                 public loadingCtr:LoadingController)
     {
         this.userSession = navParams.data;
-    }
-
-    ngOnInit(): void {
         this.listarPublicaciones();
     }
 
@@ -91,39 +88,17 @@ export class PublicacionesPage implements OnInit{
     }
 
     goCrearPublicacion(){
-        this.navCtrl.push(CrearPublicacionPage  ,{
-            user: this.userSession 
+        this.navCtrl.push(CrearPublicacionPage,{
+            user: this.userSession
         });
     }
 
     goDetallePublicacion(json_publicacion){
-
         this.navCtrl.push(DetallePublicacionPage,{
             user: this.userSession,
             publicacion: json_publicacion 
         });
-        /*let loading = this.loadingCtr.create({
-            content: 'Por favor espere...'
-        });
-        loading.present();
-        this.header['Cache-Control'] = 'no-cache';
-        this.http.clearCookies();
-        this.http.get('http://181.118.148.8:81/OfertasLaborales/public/postularVacante?vacante_id='+vacante.id+'&user_id='+this.userSession.id,
-            {},this.header)
-            .then(res =>{
-                this.zone.run(()=>{
-                    this.dataurl=JSON.parse(res.data);
-                    this.alert('Informacion Vacante',this.dataurl.msg);
-                    loading.dismiss();
-                });
-            }).catch(e =>{
-            console.log(e);
-            loading.dismiss();
-        });*/
-
-
     }
-
 
     alert(title: string, message: string) {
         let alert = this.alertCtrl.create({

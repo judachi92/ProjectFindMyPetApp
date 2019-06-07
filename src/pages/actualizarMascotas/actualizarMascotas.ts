@@ -120,7 +120,7 @@ export class ActualizarMascotas {
 
         this.header['Accept'] = ':application/json';
         this.header['Authorization'] = this.userSession.token_type+' '+this.userSession.access_token;
-        
+        this.header['Content-Type'] = 'multipart/form-data';
         this.http.clearCookies();
         this.http.delete('http://190.85.111.58:1088/FMpet/public/api/core/mascotas/'+this.mascotaModel.id,
             {},
@@ -144,12 +144,16 @@ export class ActualizarMascotas {
         );
     }
 
-    getPicture(){
+    getPicture(sourceType:number){
         let options: CameraOptions = {
             destinationType: this.camera.DestinationType.DATA_URL,
             targetWidth: 1000,
             targetHeight: 1000,
-            quality: 100
+            quality: 100,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE,
+            correctOrientation: true,
+            sourceType:sourceType,
         }
         this.camera.getPicture( options )
         .then(imageData => {

@@ -29,12 +29,16 @@ export class RegisterPage {
         this.userModel = new Usuario();
     }
 
-    getPicture(){
+    getPicture(sourceType:number){
         let options: CameraOptions = {
             destinationType: this.camera.DestinationType.DATA_URL,
             targetWidth: 1000,
             targetHeight: 1000,
-            quality: 100
+            quality: 100,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE,
+            correctOrientation: true,
+            sourceType:sourceType,
         }
         this.camera.getPicture( options )
         .then(imageData => {

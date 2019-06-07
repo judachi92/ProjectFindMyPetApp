@@ -10,10 +10,14 @@
         <ion-list>
           <ion-item>
               <img [src]="image" style="width: 300px; border-radius: 5%;" *ngIf="image" />
-              <button ion-button full icon-start color="primary" (click)="getPicture()" >
+              <button ion-button full icon-start color="primary" (click)="getPicture(1)" >
                 <ion-icon name="camera"></ion-icon>
                 Tomar Foto
-              </button>                  
+              </button>
+              <button ion-button full icon-start color="secondary" (click)="getPicture(0)" >
+                <ion-icon name="images"></ion-icon>
+                Galeria
+              </button>                    
           </ion-item>
 
           <ion-item>

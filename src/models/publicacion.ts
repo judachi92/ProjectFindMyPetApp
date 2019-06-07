@@ -4,5 +4,5 @@ export class Publicacion {
     barrio: string;
     mascota_id: number;
     person_id: number;
-
+    tipo_publicacion:string;
 }

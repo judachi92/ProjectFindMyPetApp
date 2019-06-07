@@ -8,6 +8,27 @@
   <ion-card>
     <ion-card-content>
       <ion-list>
+
+        <ion-item>
+            <img [src]="image" style="width: 300px; border-radius: 5%;" *ngIf="image" />
+            <button ion-button full icon-start color="primary" (click)="getPicture(1)" >
+              <ion-icon name="camera"></ion-icon>
+              Tomar Foto
+            </button>
+            <button ion-button full icon-start color="secondary" (click)="getPicture(0)" >
+              <ion-icon name="images"></ion-icon>
+              Galeria
+            </button>                    
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Tipo Publicación</ion-label>
+          <ion-select [(ngModel)]="publicacionModel.tipo_publicacion">
+            <ion-option value="1">REPORTE PEDIDA</ion-option>
+            <ion-option value="2">HALLAZGO</ion-option>
+          </ion-select>
+        </ion-item>
+          
         <ion-item>
           <ion-label stacked>Descripcion</ion-label>
           <ion-textarea [(ngModel)]="publicacionModel.descripcion" ></ion-textarea>
@@ -18,10 +39,9 @@
           <ion-input [(ngModel)]="publicacionModel.barrio" ></ion-input>
         </ion-item>
 
-
         <ion-item>
           <ion-label stacked>Mascota</ion-label>
-          <ion-select [(ngModel)]="publicacionModel.mascota_id">
+          <ion-select [(ngModel)]="publicacionModel.mascota_id" *ngIf="list_mascotas">
             <ion-option *ngFor="let mascota of list_mascotas" value="{{mascota.MASC_ID}}">{{mascota.MASC_NOMBRE}}</ion-option>
           </ion-select>
         </ion-item>
