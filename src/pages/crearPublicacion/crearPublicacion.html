@@ -7,19 +7,30 @@
 <ion-content>
   <ion-card>
     <ion-card-content>
+      <ion-slides pager>
+        <ion-slide *ngFor="let slide of slides; let i = index">
+          <img src="https://lh3.googleusercontent.com/7rADIIAXkEedoq9sf6SO4ZiBXkpu-XQCJBxratH4Ij4D1LxH4NbvcdRPLmjdsxfG662h" style="width: 300px; border-radius: 5%;" *ngIf="!slide.image" />
+          <img [src]="slide.image" style="width: 300px; border-radius: 5%;" *ngIf="slide.image"/>
+          
+          <ion-toolbar>
+            <ion-buttons>
+              <button ion-button icon-start color="primary" (click)="getPicture(1,i)" >
+                <ion-icon name="camera"></ion-icon>
+                Tomar Foto
+              </button>
+              <button ion-button icon-start color="secondary" (click)="getPicture(0,i)" >
+                <ion-icon name="images"></ion-icon>
+                Galeria
+              </button> 
+            </ion-buttons>
+          </ion-toolbar>
+          <p><br></p>
+        </ion-slide>
+      </ion-slides>
+
       <ion-list>
 
-        <ion-item>
-            <img [src]="image" style="width: 300px; border-radius: 5%;" *ngIf="image" />
-            <button ion-button full icon-start color="primary" (click)="getPicture(1)" >
-              <ion-icon name="camera"></ion-icon>
-              Tomar Foto
-            </button>
-            <button ion-button full icon-start color="secondary" (click)="getPicture(0)" >
-              <ion-icon name="images"></ion-icon>
-              Galeria
-            </button>                    
-        </ion-item>
+        
 
         <ion-item>
           <ion-label stacked>Tipo Publicación</ion-label>
@@ -28,7 +39,12 @@
             <ion-option value="2">HALLAZGO</ion-option>
           </ion-select>
         </ion-item>
-          
+        
+        <ion-item>
+          <ion-label stacked>Titulo</ion-label>
+          <ion-textarea [(ngModel)]="publicacionModel.titulo" ></ion-textarea>
+        </ion-item>
+
         <ion-item>
           <ion-label stacked>Descripcion</ion-label>
           <ion-textarea [(ngModel)]="publicacionModel.descripcion" ></ion-textarea>
@@ -47,7 +63,7 @@
         </ion-item>
 
         <div padding-left padding-right padding-top>
-          <button ion-button full color="primary" (click)="registrarMascota()">Grabar</button>
+          <button ion-button full color="primary" (click)="registrarPublicacion()">Grabar</button>
         </div>
       </ion-list>
     </ion-card-content>

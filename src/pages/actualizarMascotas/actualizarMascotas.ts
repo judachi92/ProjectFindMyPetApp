@@ -61,15 +61,17 @@ export class ActualizarMascotas {
         this.header['Authorization'] = this.userSession.token_type+' '+this.userSession.access_token;
         
         this.http.clearCookies();
+        let body = {
+            MASC_NOMBRE: this.mascotaModel.nombre,
+            MASC_EDAD: this.mascotaModel.edad,
+            MASC_TIPO: this.mascotaModel.tipo,
+            MASC_DESCRIPCION: this.mascotaModel.descripcion,
+            PERS_ID: this.mascotaModel.person_id,
+            MASC_FOTO: this.image
+        }
+        console.log(body);
         this.http.put('http://190.85.111.58:1088/FMpet/public/api/core/mascotas/'+this.mascotaModel.id,
-            {
-                MASC_NOMBRE: this.mascotaModel.nombre,
-                MASC_EDAD: this.mascotaModel.edad,
-                MASC_TIPO: this.mascotaModel.tipo,
-                MASC_DESCRIPCION: this.mascotaModel.descripcion,
-                PERS_ID: this.mascotaModel.person_id,
-                MASC_FOTO: this.image
-            },
+            body,
             this.header)
             .then(res =>{
                 this.zone.run(()=>{

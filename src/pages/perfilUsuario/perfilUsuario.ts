@@ -40,19 +40,21 @@ export class PerfilUsuarioPage implements OnInit{
         loading.present();
 
         this.header['Accept'] = ':application/json';
+        this.header['Authorization'] = this.userSession.token_type+' '+this.userSession.access_token;
         this.header['Content-Type'] = 'multipart/form-data';
         this.http.clearCookies();
-        this.http.put('http://190.85.111.58:1088/FMpet/public/api/users',
-            {
-                nombres: this.userSession.nombre,
-                apellidos: this.userSession.apellido,
-                cedula: this.userSession.cedula,
-                email: this.userSession.email,
-                direccion: this.userSession.direccion,
-                telefono: this.userSession.telefono,
-                password:this.userSession.clave,
-                password_confirmation:this.userSession.confirmar_clave
-            },
+
+        let body = {
+            nombres: this.userSession.nombre,
+            apellidos: this.userSession.apellido,
+            direccion: this.userSession.direccion,
+            telefono: this.userSession.telefono,
+            password:this.userSession.clave,
+            password_confirmation:this.userSession.confirmar_clave
+        };
+        console.log(body);
+        this.http.put('http://190.85.111.58:1088/FMpet/public/api/users/'+this.userSession.id,
+            body,
             this.header)
             .then(res =>{
                 this.zone.run(()=>{
